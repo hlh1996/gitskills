@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css?family=Droid+Sans:400,700');
+
+.fssopen, .fssopen body { /* class added to HTML element when full screen slider is open to hide potential body scrollbars */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.fullscreenslider {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    font-size: 16px; /* base font size */
+    visibility: visible;
+    overflow: hidden;
+}
+
+.slidewrapper { /* wrapper DIV that surrounds the ARTICLE elements inside .dd_fullscreenslider */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transform: translate3d(0, 0, 0); /* to prevent flickering in iOS */
+    -moz-transition: -moz-transform 0.5s; /* actual duration controlled by script */
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+}
+
+.fssnav { /* UL list dynamically added by script for Slider navigation */
+    list-style: none;
+    margin: 0;
+    position: absolute;
+    top: 50%; /* vertically center menu */
+    right: 50px; /* distance from right edge of screen */
+    transform: translateY(-50%); /* vertically center menu */
+}
+
+.fssnav li {
+    margin-bottom: 15px;
+}
+
+.fssnav li a {
+    text-decoration: none;
+    border: 3.5px solid #225378; /* border color of nav links */
+    opacity: 0.8;
+    border-radius: 50%;
+    width: 15px; /* dimensions of nav links */
+    height: 15px;
+    display: block;
+    position: relative;
+    text-indent: -500px;
+    outline: none;
+    overflow: hidden;
+}
+
+.fssnav li a::after { /* create "fill" element inside A */
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 100%;
+    left: 0;
+    background: #225378; /* color of "fill" element */
+    opacity: 0.6;
+    transition: top 0.5s; /* transition for "fill up" effect */
+}
+
+.fssnav .selected a::after {
+    top: 0; /* fill up selected A element from bottom to top */
+}
+
+.fullscreenslider .slide { /* CSS for each slide */
+    width: 100%;
+    height: 100%;
+    display: block;
+    font-family: 'Droid Sans', sans-serif; /* Use google font */
+    font-size: 60px;
+    line-height: 2em;
+    color: #225378;
+    overflow: hidden;
+    -webkit-box-sizing: border-box; /* include padding/ border as part of declared menu width */
+    -moz-box-sizing: border-box;
+    z-index: 1000;
+    background: white;
+    -webkit-transform: translate3d(0, 0, 0); /* to prevent flickering in iOS */
+}
+
+.fullscreenslider .slide h2 { /* H2 Header inside each slide */
+    font-size: 3em;
+    margin: 0;
+    line-height: 1.1em;
+    letter-spacing: 3px;
+}
+
+.fullscreenslider .slide .scrollable { /* Assign this class to elements within a slide that should be scrollable */
+    overflow: auto;
+}
+
+.fullscreenslider .slide {
+    background: #F3FFE2;
+}
+
+.fullscreenslider .closex { /* Large x close button inside Slider */
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    display: block;
+    position: fixed;
+    cursor: pointer;
+    text-indent: -1000px;
+    opacity: 0.8;
+    z-index: 1001;
+    top: 5px;
+    right: 3px;
+}
+
+.fullscreenslider .closex::after { /* render large x inside close button */
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 6px;
+    background: white; /* color of x button */
+    top: 50%;
+    margin-top: -3px;
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.fullscreenslider .closex::after { /* render large cross inside close button */
+    -ms-transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+}
+
+.navbar {
+    background: #225378;
+    border-radius: 0;
+    height: 45px;
+}
+
+.navbar-brand {
+    padding-top: 14px;
+    padding-bottom: 10px;
+    color: #F3FFE2 !important;
+}
+
+ul.nav li {
+    position: relative;
+}
+
+ul.nav li:hover > ul {
+    display: block;
+}
+
+ul.nav ul {
+    position: absolute;
+    top: 100%;
+    list-style: none;
+    display: none;
+}
+
+ul.nav ul.dropdown-menu a {
+    margin-top: 0px;
+    padding-bottom: 20px;
+    padding-top: 5px;
+    height: 30px;
+}
+
+ul.nav li a:hover{
+    border-bottom: 2px solid #F3FFE2;
+}
+
+ul.nav li a {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-top: 4px;
+    border-bottom: 2px solid transparent;
+    color: #F3FFE2 !important;
+    background: #225378 !important;
+}
+
+ul.nav li a {
+    -webkit-transition: border-color ease-in-out 0.25s;
+    -moz-transition: border-color ease-in-out 0.25s;
+    -o-transition: border-color ease-in-out 0.25s;
+    transition: border-color ease-in-out 0.25s;
+}
+
+ul.dropdown-menu {
+    background: #225378;
+    width: 10px !important;
+}
+
+.brand {
+    margin-top: 5em;
+}
+
+.bio-text {
+    margin-top: 30%;
+    font-size:30px;
+    line-height: 40px;
+}
+
+.Team-title {
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 60px;
+    font-size: 60px;
+    color: #EB7F00;
+    border-bottom: solid black 2px;
+}
+
+.Team-txt1 {
+    text-align: center;
+    font-size: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.Team-txt2 {
+    font-size: 20px;
+    margin: 50px 10%;
+}
+
+.bottom {
+    margin-top: 100px;
+    background-color: #225378;
+    color: yellow;
+    vertical-align: middle;
+    text-align: center;
+}
+.bottom a:link {color: yellow;background-color: #225378}
+.bottom a:visited {color: white;background-color: #225378}
+
+.Project-style {
+    text-align: center;
+    margin: 100px 10%;
+    font-size: 20px;
+}
+
+.Project-arrange {
+    text-align: center;
+    margin: 20px;
+}
+
+.Project-arrange ul {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.Project-arrange ul li {
+    display: inline-block;
+    padding: 20px;
+    margin: 0;
+    background-color: #a6e1ec;
+    font-size: 20px;
+}
+
+.Awards-txt {
+    margin: 100px auto;
+}
